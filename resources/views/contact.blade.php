@@ -16,7 +16,7 @@
 <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Quick Example</h3>
+              <h3 class="box-title">Quick Text</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -57,13 +57,17 @@
             </form>
               <table class="table table-striped">
                 <tr>
-                    <th>Name</th>
                     <th>Message</th>
+                    <th>Email</th>
+                    <th>Subscription Sts.</th>
                 </tr>
+                @foreach($contacts as $contact)
                <tr>
-                    <td>D</td>
-                    <td>L</td>
+                    <td>{{$contact->message}}</td>
+                    <td>{{$contact->email}}</td>
+                    <td>{{$contact->newsletter}}</td>
                 </tr>
+                @endforeach
               </table>
               </div>
           <!-- /.box -->

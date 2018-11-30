@@ -25,6 +25,9 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+            <form role="form" action="" method="post">
+            @csrf
+            <button type="submit" class="btn btn-primary">Create New</button><br>
               <table class="table table-striped">
                 <tr>
                     <th>Session Reported</th>
@@ -43,6 +46,7 @@
                     <td></td>
                 </tr>
               </table>
+              </form>
             </div>
             <!-- /.box-body -->
           </div>

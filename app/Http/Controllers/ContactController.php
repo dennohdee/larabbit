@@ -37,5 +37,9 @@ class ContactController extends Controller
         $contact->save();
         return redirect()->route('contact');
         }
+        public function getContacts(){
+        $contacts = Contact::all(); 
+        return view('contact',compact('contacts')); 
+        }
        
 }

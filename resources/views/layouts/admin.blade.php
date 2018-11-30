@@ -76,24 +76,24 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+              <img src="{{ asset('img/avatar5.png') }}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                <img src="{{ asset('img/avatar5.png') }}" class="img-circle" alt="User Image">
 
                 <p>
                 {{ Auth::user()->name }} - Student
-                  <small>Student since Nov. 2012</small>
+                  <small>Student since {{Auth::user()->created_at}}</small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{route ('profile')}}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
@@ -123,12 +123,12 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+          <img src="{{ asset('img/avatar5.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="{{route ('admindash')}}"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
 
@@ -151,7 +151,19 @@ desired effect
         <li class="active"><a href="{{ route('home')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="{{ route('sessionreporting') }}"><i class="fa fa-sign-in"></i> <span>Session Reporting</span></a></li>
         <li><a href="{{ route('admission') }}"><i class="fa fa-group"></i> <span>Admission</span></a></li>
-        <li><a href="#"><i class="fa fa-bed"></i> <span>Accomodation</span></a></li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-book"></i> <span>Academic Details</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-edit"></i> Unit Registration</a></li>
+            <li><a href="#"><i class="fa fa-book"></i> Transcript</a></li>
+            <li><a href="#"><i class="fa fa-book"></i> Exam results</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ route('accommodation')}}"><i class="fa fa-bed"></i> <span>Accomodation</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-money"></i> <span>Finance</span>
             <span class="pull-right-container">
@@ -159,7 +171,7 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-balance-scale"></i> Fee Status</a></li>
+            <li><a href="{{ route('feestatus') }}"><i class="fa fa-balance-scale"></i> Fee Status</a></li>
             <li><a href="{{ route('feestructure') }}"><i class="fa fa-book"></i> Fee Structure</a></li>
           </ul>
         </li>

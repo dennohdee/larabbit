@@ -1,23 +1,36 @@
 <?php
+ 
+namespace App\Http\Controllers; 
+ 
+use Illuminate\Http\Request; 
+use App\User; 
 
-namespace App\Http\Controllers;
+ 
+class UsersController extends Controller 
+{ 
+    // 
+    public function __construct() 
+    { 
+        $this->middleware('auth'); 
+    } 
+    public function users() 
+    { 
+        return view('users'); 
+    } 
+    //diplay users
+    public function getUsers() 
+    { 
 
-use Illuminate\Http\Request;
+        $users = User::all(); 
+        return view('users',compact('users')); 
+    } 
+    public function getMe() 
+    { 
 
-class UsersController extends Controller
-{
-    //
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    public function users()
-    {
-        return view('users');
-    }
-    public function getUsers()
-    {
-        $users = User::all();
-        return view('users',compact('user'));
-    }
+        $users = User::all()->where('name','Dearl'); 
+        return view('profile',compact('users')); 
+    } 
 }
+
+
+
