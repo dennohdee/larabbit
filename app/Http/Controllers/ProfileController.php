@@ -7,7 +7,7 @@ use App\Profile;
 
 class ProfileController extends Controller
 {
-    //
+    //not used
     public function __construct()
     {
         $this->middleware('auth');
@@ -17,7 +17,7 @@ class ProfileController extends Controller
         return view('profile');
     }
     public function getProfiles(){
-        $users= Profile::all(); 
+        $users= Profile::all()->where('id', \Auth::id());
         return view('profile',compact('users')); 
         }
 }

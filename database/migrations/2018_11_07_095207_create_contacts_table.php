@@ -18,7 +18,10 @@ class CreateContactsTable extends Migration
             $table->string('name',65);
             $table->string('email',65);
             $table->text('message');
+            $table->string('reply')->nullable();
+            $table->string('replier')->nullable();
             $table->boolean('newsletter');
+            $table->integer('posted_by');
             $table->timestamps();
         });
     }

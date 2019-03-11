@@ -7,70 +7,81 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active">Contact</li>
+        <li class="active">Message</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content container-fluid">
-<!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Quick Text</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" action="{{ route('contact') }}" method="post">
-                @csrf
-              <div class="box-body">
-              <div class="row">
-                <div class="col-md-6">
-                <div class="form-group">
-                  <label for="name">Your name</label>
-                  <input class="form-control" id="name" name="name" placeholder="" type="text" required>
-                </div>
-                </div>
-                <div class="col-md-6">
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input class="form-control" id="email" name="email" placeholder="Your Email" type="email" required>
-                </div>
-                </div>
-                </div>
-                <div class="form-group">
-                  <label for="message">Message</label>
-                  <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
-                </div>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="newsletter"> Subscribe to our newsletter
-                  </label>
-                </div>
-            
-              
-              <!-- /.box-body -->
+          <!-- DIRECT CHAT -->
+          <div class="box box-primary direct-chat direct-chat-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Quick Text</h3>
 
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                  <div class="box-tools pull-right">
+                    <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <!-- Conversations are loaded here -->
+                 
+                  <div class="direct-chat-messages">
+                    <!-- Message. Default to the left -->
+                     @foreach($contacts as $contact)
+                     <div class="direct-chat-msg">
+                      <div class="direct-chat-info clearfix">
+                        <span class="direct-chat-name pull-left">{!! $contact->email !!}</span>
+                        <span class="direct-chat-timestamp pull-right">{!! $contact->created_at !!}</span>
+                      </div>
+                      <!-- /.direct-chat-info -->
+                      <img class="direct-chat-img" src="{{ asset('/img/avatar.png')}}" alt="message user image">
+                      <!-- /.direct-chat-img -->
+                      <div class="direct-chat-text">
+                      {!! $contact->message !!}
+                      </div>
+                      <!-- /.direct-chat-text -->
+                    </div>
+                    <!-- /.direct-chat-msg -->
+
+                    <!-- Message to the right -->
+                    <div class="direct-chat-msg right">
+                      <div class="direct-chat-info clearfix">
+                        <span class="direct-chat-name pull-right">{!! $contact->replier !!}</span>
+                        <span class="direct-chat-timestamp pull-left">{!! $contact->updated_at !!}</span>
+                      </div>
+                      <!-- /.direct-chat-info -->
+                      <img class="direct-chat-img" src="{{ asset('/img/avatar.png')}}" alt="message user image">
+                      <!-- /.direct-chat-img -->
+                      <div class="direct-chat-text">
+                      {!! $contact->reply !!}
+                      </div>
+                      <!-- /.direct-chat-text -->
+                    </div>
+                    <!-- /.direct-chat-msg -->
+                   @endforeach
+
+                   </div>
+                  <!-- /.direct-chat-pane -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                <form role="form" action="{{ route('contact') }}" method="post">
+                @csrf
+                    <div class="input-group">
+                      <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                      <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                          </span>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.box-footer-->
               </div>
+              <!--/.direct-chat -->
               
-            </form>
-              <table class="table table-striped">
-                <tr>
-                    <th>Message</th>
-                    <th>Email</th>
-                    <th>Subscription Sts.</th>
-                </tr>
-                @foreach($contacts as $contact)
-               <tr>
-                    <td>{{$contact->message}}</td>
-                    <td>{{$contact->email}}</td>
-                    <td>{{$contact->newsletter}}</td>
-                </tr>
-                @endforeach
-              </table>
-              </div>
-          <!-- /.box -->
           </section>
          
 @endsection

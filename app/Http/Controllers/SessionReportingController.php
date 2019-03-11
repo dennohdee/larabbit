@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class SessionReportingController extends Controller
 {
-    //
+    //a
     public function __construct()
     {
         $this->middleware('auth');

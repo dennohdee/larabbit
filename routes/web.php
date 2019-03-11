@@ -27,4 +27,10 @@ Route::get('/accommodation', 'AccommodationController@accommodation')->name('acc
 Route::get('/feestatus', 'FeestatusController@feestatus')->name('feestatus');
 Route::get('/profile', 'UsersController@getMe')->name('profile');
 Route::get('/admin/dashboard', 'AdminDashController@admindash')->name('admindash');
+Route::get('/report', 'ReportController@report')->name('report');
+//Route::get('/report', 'ReportController@addSession');
+Route::get('/repository', 'RepositoryController@repository')->name('repository');
+Route::get('/calendar', 'CalendarController@calendar')->name('calendar');
+Route::get('/about', 'AboutController@about')->name('about');
+Route::get('/help', 'HelpController@help')->name('help');
 Route::post('/contact', 'ContactController@store');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contact;
+use Auth;
 
 class ContactController extends Controller
 {
@@ -20,9 +21,10 @@ class ContactController extends Controller
     }
     public function store(Request $request)
     {
-        $name = $request->input('name');
-        $email = $request->input('email');
+        $name = Auth::user()->name;
+        $email = Auth::user()->email;
         $message = $request->input('message');
+        $posted_by = Auth::user()->id;
         $newsletter = $request->input('newsletter') == 'on' ? true : false;
 
         //dd($newsletter);
@@ -31,6 +33,7 @@ class ContactController extends Controller
         $contact->name = $name;
         $contact->email = $email;
         $contact->message = $message;
+        $contact->posted_by = $posted_by;
         $contact->newsletter = $newsletter;
 
 
@@ -38,7 +41,7 @@ class ContactController extends Controller
         return redirect()->route('contact');
         }
         public function getContacts(){
-        $contacts = Contact::all(); 
+        $contacts = Contact::all()->where('posted_by', \Auth::id()); 
         return view('contact',compact('contacts')); 
         }
        

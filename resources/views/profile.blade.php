@@ -40,13 +40,25 @@
                 <div class="col-md-6">
                 <div class="form-group">
                   <label for="name">Member Since:</label>
-                  <input class="form-control" id="created_at" name="created_at" value="" placeholder="" type="text" required>
+                  <input class="form-control" id="created_at" name="created_at" value="{{ $user->created_at }}" type="text" readonly>
                 </div>
                 </div>
                 <div class="col-md-6">
                 <div class="form-group">
                   <label for="email">Photo</label>
                   <input class="form-control" id="email" name="email" value="" type="file" required>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" name="password">
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                <label for="cpassword">Confirm Password</label>
+                <input class="form-control" type="password" name="cpassword">
                 </div>
                 </div>
                 </div>

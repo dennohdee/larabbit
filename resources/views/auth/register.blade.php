@@ -40,6 +40,34 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="regno" class="col-md-4 col-form-label text-md-right">{{ __('Reg No.') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="regno" type="text" class="form-control{{ $errors->has('regno') ? ' is-invalid' : '' }}" name="regno" value="{{ old('regno') }}" required>
+
+                                @if ($errors->has('regno'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('regno') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone No') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
+
+                                @if ($errors->has('phone'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

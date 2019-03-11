@@ -27,7 +27,7 @@ class UsersController extends Controller
     public function getMe() 
     { 
 
-        $users = User::all()->where('name','Dearl'); 
+        $users = User::all()->where('id', \Auth::id()); 
         return view('profile',compact('users')); 
     } 
 }

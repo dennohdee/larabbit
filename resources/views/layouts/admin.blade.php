@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{ config('app.name', 'D Site') }}</title>
+  <title>{{ config('app.name', 'KUUIA') }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
   <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
+  <!-- fullCalendar -->
+  <link rel="stylesheet" href="{{ asset('bower_components/fullcalendar/dist/fullcalendar.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('bower_components/fullcalendar/dist/fullcalendar.print.min.css') }}" media="print">
   <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
-  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="{{ asset('css/skins/skin-blue.css') }}">
   <link rel="stylesheet" href="{{ asset('css/skins/skin-black.css') }}">
   <link rel="stylesheet" href="{{ asset('css/skins/skin-black-light.css') }}">
@@ -44,7 +44,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue fixed">
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -53,9 +53,13 @@ desired effect
     <!-- Logo -->
     <a href="{{ route('home')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>LT</b>P</span>
+      <span class="logo-mini">
+      <img src="{{ asset('/img/logo.jpg')}}" width="50px" height="50px" title="{{ config('app.name', 'Laravel') }}">&nbsp;
+      <b>KUI</b>P</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>LOTI</b>Portal</span>
+      <span class="logo-lg">
+      <img src="{{ asset('/img/logo.jpg')}}" width="50px" height="50px" title="{{ config('app.name', 'Laravel') }}">&nbsp;
+      <b>KUUIA</b>Portal</span>
     </a>
 
     <!-- Header Navbar -->
@@ -86,8 +90,8 @@ desired effect
                 <img src="{{ asset('img/avatar5.png') }}" class="img-circle" alt="User Image">
 
                 <p>
-                {{ Auth::user()->name }} - Student
-                  <small>Student since {{Auth::user()->created_at}}</small>
+                {{ Auth::user()->name }}
+                  <small>Member since {{Auth::user()->created_at}}</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -107,9 +111,7 @@ desired effect
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+          
         </ul>
       </div>
     </nav>
@@ -148,35 +150,14 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="{{ route('home')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="{{ route('sessionreporting') }}"><i class="fa fa-sign-in"></i> <span>Session Reporting</span></a></li>
-        <li><a href="{{ route('admission') }}"><i class="fa fa-group"></i> <span>Admission</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-book"></i> <span>Academic Details</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-edit"></i> Unit Registration</a></li>
-            <li><a href="#"><i class="fa fa-book"></i> Transcript</a></li>
-            <li><a href="#"><i class="fa fa-book"></i> Exam results</a></li>
-          </ul>
-        </li>
-        <li><a href="{{ route('accommodation')}}"><i class="fa fa-bed"></i> <span>Accomodation</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-money"></i> <span>Finance</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ route('feestatus') }}"><i class="fa fa-balance-scale"></i> Fee Status</a></li>
-            <li><a href="{{ route('feestructure') }}"><i class="fa fa-book"></i> Fee Structure</a></li>
-          </ul>
-        </li>
+        <li><a href="{{ route('home')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="{{route('repository')}}"><i class="fa fa-database"></i> <span>Repository</span></a></li>
+        <li><a href="{{ route('sessionreporting') }}"><i class="fa fa-retweet"></i> <span>Renewal</span></a></li>
         <li><a href="{{ route('contact') }}"><i class="fa fa-comment"></i> <span>Messages</span></a></li>
-        <li><a href="{{ route('users') }}"><i class="fa fa-group"></i> <span>Users</span></a></li>
+        <li><a href="{{ route('calendar') }}"><i class="fa fa-calendar"></i> <span>Calendar</span></a></li>
+       <li><a href="{{ route('users') }}"><i class="fa fa-group"></i> <span>Associates</span></a></li>
+       <li><a href="{{ route('about') }}"><i class="fa fa-info-circle"></i> <span>About</span></a></li>
+       <li><a href="{{ route('help') }}"><i class="fa fa-question-circle"></i> <span>Help</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -193,83 +174,14 @@ desired effect
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Powered by LTE
+    All rights reserved.
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="mailto:denniskiprotich0@gmail.com">RabbitTech</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019 <a href="mailto:denniskiprotich0@gmail.com">KUUIA</a>.</strong>
   </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane active" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="pull-right-container">
-                    <span class="label label-danger pull-right">70%</span>
-                  </span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
+  
       </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
   </aside>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
@@ -286,12 +198,188 @@ desired effect
 <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js') }}"></script>
+<script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
 
+<script src="{{ asset('bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Slimscroll -->
-<script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.j') }}s"></script>
 <!-- FastClick -->
 <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('dist/js/demo.js')}}"></script>
+<!-- fullCalendar -->
+<script src="{{ asset('bower_components/moment/moment.js') }}"></script>
+<script src="{{ asset('bower_components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1')
+    //bootstrap WYSIHTML5 - text editor
+    $('.textarea').wysihtml5()
+  })
+</script>
+<script>
+  $(function () {
+
+    /* initialize the external events
+     -----------------------------------------------------------------*/
+    function init_events(ele) {
+      ele.each(function () {
+
+        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+        // it doesn't need to have a start or end
+        var eventObject = {
+          title: $.trim($(this).text()) // use the element's text as the event title
+        }
+
+        // store the Event Object in the DOM element so we can get to it later
+        $(this).data('eventObject', eventObject)
+
+        // make the event draggable using jQuery UI
+        $(this).draggable({
+          zIndex        : 1070,
+          revert        : true, // will cause the event to go back to its
+          revertDuration: 0  //  original position after the drag
+        })
+
+      })
+    }
+
+    init_events($('#external-events div.external-event'))
+
+    /* initialize the calendar
+     -----------------------------------------------------------------*/
+    //Date for the calendar events (dummy data)
+    var date = new Date()
+    var d    = date.getDate(),
+        m    = date.getMonth(),
+        y    = date.getFullYear()
+    $('#calendar').fullCalendar({
+      header    : {
+        left  : 'prev,next today',
+        center: 'title',
+        right : 'month,agendaWeek,agendaDay'
+      },
+      buttonText: {
+        today: 'today',
+        month: 'month',
+        week : 'week',
+        day  : 'day'
+      },
+      //Random default events
+      events    : [
+        {
+          title          : 'ASK Show',
+          start          : new Date(y, m, 1),
+          backgroundColor: '#f56954', //red
+          borderColor    : '#f56954' //red
+        },
+        {
+          title          : 'Project',
+          start          : new Date(y, m, d - 5),
+          end            : new Date(y, m, d - 2),
+          backgroundColor: '#f39c12', //yellow
+          borderColor    : '#f39c12' //yellow
+        },
+        {
+          title          : 'Meeting',
+          start          : new Date(y, m, d, 10, 30),
+          allDay         : false,
+          backgroundColor: '#0073b7', //Blue
+          borderColor    : '#0073b7' //Blue
+        },
+        {
+          title          : 'Clinic',
+          start          : new Date(y, m, d, 12, 0),
+          end            : new Date(y, m, d, 14, 0),
+          allDay         : false,
+          backgroundColor: '#00c0ef', //Info (aqua)
+          borderColor    : '#00c0ef' //Info (aqua)
+        },
+        {
+          title          : 'Coding Night',
+          start          : new Date(y, m, d + 1, 19, 0),
+          end            : new Date(y, m, d + 1, 22, 30),
+          allDay         : false,
+          backgroundColor: '#00a65a', //Success (green)
+          borderColor    : '#00a65a' //Success (green)
+        },
+        {
+          title          : 'GDG',
+          start          : new Date(y, m, 28),
+          end            : new Date(y, m, 29),
+          url            : 'http://google.com/',
+          backgroundColor: '#3c8dbc', //Primary (light-blue)
+          borderColor    : '#3c8dbc' //Primary (light-blue)
+        }
+      ],
+      editable  : true,
+      droppable : true, // this allows things to be dropped onto the calendar !!!
+      drop      : function (date, allDay) { // this function is called when something is dropped
+
+        // retrieve the dropped element's stored Event Object
+        var originalEventObject = $(this).data('eventObject')
+
+        // we need to copy it, so that multiple events don't have a reference to the same object
+        var copiedEventObject = $.extend({}, originalEventObject)
+
+        // assign it the date that was reported
+        copiedEventObject.start           = date
+        copiedEventObject.allDay          = allDay
+        copiedEventObject.backgroundColor = $(this).css('background-color')
+        copiedEventObject.borderColor     = $(this).css('border-color')
+
+        // render the event on the calendar
+        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true)
+
+        // is the "remove after drop" checkbox checked?
+        if ($('#drop-remove').is(':checked')) {
+          // if so, remove the element from the "Draggable Events" list
+          $(this).remove()
+        }
+
+      }
+    })
+
+    /* ADDING EVENTS */
+    var currColor = '#3c8dbc' //Red by default
+    //Color chooser button
+    var colorChooser = $('#color-chooser-btn')
+    $('#color-chooser > li > a').click(function (e) {
+      e.preventDefault()
+      //Save color
+      currColor = $(this).css('color')
+      //Add color effect to button
+      $('#add-new-event').css({ 'background-color': currColor, 'border-color': currColor })
+    })
+    $('#add-new-event').click(function (e) {
+      e.preventDefault()
+      //Get value and make sure it is not null
+      var val = $('#new-event').val()
+      if (val.length == 0) {
+        return
+      }
+
+      //Create events
+      var event = $('<div />')
+      event.css({
+        'background-color': currColor,
+        'border-color'    : currColor,
+        'color'           : '#fff'
+      }).addClass('external-event')
+      event.html(val)
+      $('#external-events').prepend(event)
+
+      //Add draggable funtionality
+      init_events(event)
+
+      //Remove event from text input
+      $('#new-event').val('')
+    })
+  })
+</script>
 </body>
 </html>

@@ -2,8 +2,8 @@
 @section('content')
 <section class="content-header">
       <h1>
-        Membership Renewal.&nbsp;
-        <small> Please pay the renewal fee in time</small>
+      Membership Renewal.&nbsp;
+        <small>Please report in time</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i>Home</a></li>
@@ -15,7 +15,7 @@
     <section class="content container-fluid">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Renew Membership</h3>
+              <h3 class="box-title">Renew here</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
@@ -25,14 +25,26 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-            <form role="form" action="" method="post">
+            <form role="form" action="{{ route('report') }}" method="post">
             @csrf
+            <div class="form-group">
+                  <label for="academicyear">Academic Year</label>
+                  <select class="form-control" name="ac" id="ac">
+                    <option value="2016/2017">2016/2017</option>
+                    <option value="2017/2018">2017/2018</option>
+                  </select>
+            </div>
+            
             <div class="box-footer">
-            <a href="{{ route('report') }}" ><button type="button" class="btn btn-primary">Renew</button></a>
-              </div>
+            <a href="{{ route('sessionreporting')}}">
+            <button type="button" class="btn btn-default">Cancel</button>
+            </a>
+            <button type="submit" class="btn btn-primary pull-right">Renew</button>
+            </div>  
+
               <table class="table table-striped">
                 <tr>
-                    <th>Membership History</th>
+                    <th>Session Reported</th>
                     <th>Date Created</th>
                 </tr>
                 <tr>
